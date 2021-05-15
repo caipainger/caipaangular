@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductcreateRoutingModule } from './productcreate-routing.module';
 import { ProductcreateComponent } from './productcreate.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProductcreateRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ProductcreateModule { }
