@@ -25,21 +25,28 @@
             <div class="form-group">
                 <label class="form-label mt-4 text-capitalize">quantity</label>
                 <select class="form-select" id="exampleSelect1" name="quantity" #quantity="ngModel" [(ngModel)]="productService.selectproduct.quantity">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option>1. </option>
+              <option>2. </option>
+              <option>3. </option>
+              <option>4. </option>
+              <option>5. </option>
             </select>
+                <label class="form-label mt-4 text-capitalize">units</label>
+                <select class="form-select" id="exampleSelect1" name="units" #units="ngModel" [(ngModel)]="productService.selectproduct.units">
+          <option> mts</option>
+          <option> unds</option>
+          <option> C/U</option>
+        </select>
             </div>
 
             <div class="form-group">
                 <label class="form-label mt-4 text-capitalize">insert description</label>
-                <textarea class="form-control fa-chart-line" id="exampleTextarea" name="description" #description="ngModel" [(ngModel)]="productService.selectproduct.description" rows="6"></textarea>
+                <textarea class="form-control " id="exampleTextarea" name="description" #description="ngModel" [(ngModel)]="productService.selectproduct.description" rows="6"></textarea>
             </div>
             <div class="form-group">
                 <label for="formFile" class="form-label mt-4 text-capitalize">insert an image</label>
-                <input class="form-control" type="file" id="formFile" name="image" #image="ngModel" [(ngModel)]="productService.selectproduct.image">
+                <input class="form-control" type="file" accept=".png, .jpg, .ico, .tiff, .gif " (change)="onUpload($event)" id="formFile" name="image">
+
             </div>
         </fieldset>
         <fieldset class="form-group mt-5">

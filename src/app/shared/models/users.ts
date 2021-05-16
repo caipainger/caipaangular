@@ -1,7 +1,9 @@
 export class Users {
     $key!: string;
-    name!: string;
+    fname!: string;
+    lname!: string;
     email!: string;
     password!: number;
     phonenumber!: number;
+    role!: string;
 }

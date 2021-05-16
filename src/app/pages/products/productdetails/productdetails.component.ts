@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ProductsService } from 'src/app/page/services/products/products.service';
 import { Products } from 'src/app/shared/models/products';
+import { ProductcreateComponent } from '../productcreate/productcreate.component';
 
 @Component({
   selector: 'app-productdetails',
@@ -10,6 +11,7 @@ import { Products } from 'src/app/shared/models/products';
 })
 export class ProductdetailsComponent implements OnInit {
   valueitem: any = null;
+  productscom!: ProductcreateComponent ;
   navigationextras: NavigationExtras = {
     state: {
       value: null
@@ -24,7 +26,7 @@ export class ProductdetailsComponent implements OnInit {
 
   }
   onGoToEdit(valueitem: Products){
-    //this.productService.updateProductos(valueitem) ;
+    this.productService.updateProductos(valueitem) ;
     this.router.navigate(['productcreate'], this.navigationextras);
     alert('esto es lo que hay  ' + valueitem.$key + ' ');
   }
@@ -39,6 +41,9 @@ export class ProductdetailsComponent implements OnInit {
   onGoToBack(){
     this.router.navigate(['productlist']);
   }
+  
+
+
 
 
 

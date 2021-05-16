@@ -9,7 +9,7 @@ import { FooterModule } from './shared/components/footer/footer.module';
 import { HeaderModule } from './shared/components/header/header.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
     FooterModule,
     HeaderModule,
     AngularFireDatabaseModule,
-    AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
