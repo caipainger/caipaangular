@@ -8,8 +8,8 @@ import { Products } from 'src/app/shared/models/products';
 })
 export class QuotesService {
   // tslint:disable-next-line: new-parens
-  selectQuotes: Messages = new Messages;
-  selectProduct: Products = new Products;
+  selectQuotes: Messages = new Messages();
+  selectProduct: Products = new Products();
 
   Quoteslist!: AngularFireList<any>;
 
@@ -22,7 +22,7 @@ export class QuotesService {
     }
 
   insertCotizador(cotiza: Messages): void {
-    this.Quoteslist.push({
+    this.Quoteslist.push ({
       name: cotiza.name,
       product: cotiza.product,
       quantity: cotiza.quantity,

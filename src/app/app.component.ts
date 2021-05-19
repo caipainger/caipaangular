@@ -15,11 +15,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
     if ( !this.productService.getProduct() )  {
-      this.router.navigate(['productlist']);
-    }else{
       this.router.navigate(['productcreate']);
+    }else{
+      this.router.navigate(['productlist']);
     }
-    this.router.initialNavigation();
+    
 
   }
 

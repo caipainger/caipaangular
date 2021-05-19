@@ -12,7 +12,7 @@ import { Messages } from 'src/app/shared/models/messages';
 export class QuotescreateComponent implements OnInit {
 
   quotes!: Messages;
-  productsForm!: FormGroup;
+  quotesForm!: FormGroup;
   constructor(private router: Router,
     public quotesService: QuotesService) { }
 
@@ -23,9 +23,9 @@ export class QuotescreateComponent implements OnInit {
   }
   onSubmit(quotesForm: NgForm){
     if (quotesForm.value.$key == null) {
-      this.quotesService.updateCotizar(quotesForm.value);
-    }else {
       this.quotesService.insertCotizador(quotesForm.value);
+    }else {
+      this.quotesService.updateCotizar(quotesForm.value);
     }
 
     // tslint:disable-next-line: no-non-null-assertion
@@ -39,11 +39,7 @@ export class QuotescreateComponent implements OnInit {
     if (quotesForm != null) {
       quotesForm.reset();
       this.quotesService.selectQuotes = new Messages();
-      this.quotesService.selectQuotes.$key
-      this.quotesService.selectQuotes.name
-      this.quotesService.selectQuotes.product
-      this.quotesService.selectQuotes.quantity
-      this.quotesService.selectQuotes.message
+     
     }
   }
 
