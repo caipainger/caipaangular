@@ -17,8 +17,8 @@ export class ProductcreateComponent implements OnInit {
   products!: Products;
   productsForm!: FormGroup;
   productsFormImage!: FormGroup;
-  //uploadpercent!: Observable<number>;
-  //urlImage!: Observable<string>;
+  uploadpercent!: Observable<number>;
+  urlImage!: Observable<string>;
   finImage!: string;
 
   navigationextras: NavigationExtras = {
@@ -31,7 +31,6 @@ export class ProductcreateComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private formbuild: FormBuilder,
               public storage: AngularFireStorage,
               public productService: ProductsService) {
     const navigation = this.router.getCurrentNavigation();
@@ -43,13 +42,13 @@ export class ProductcreateComponent implements OnInit {
   onUpload(e: any){
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filepath = `Upload/Products/product-${id}`;
+    const filepath = `Upload/Products/${this.products.name}`;
     const ref = this.storage.ref(filepath);
-    const task = this.storage.upload(filepath, file)
+    const task = this.storage.upload(filepath, file);
     console.log('subir ', e.target.files[0]);
     console.log('subir ', task.snapshotChanges);
-    //const uploadpercent = task.percentageChanges();
-    //task.snapshotChanges().pipe(finalize(( )=> this.urlImage = ref.getDownloadURL())).subscribe();
+    const uploadpercent = task.percentageChanges();
+    task.snapshotChanges().pipe(finalize(( )=> this.products.image = ref.getDownloadURL())).subscribe();
     //this.urlImage;
     //console.log(this.urlImage);
 

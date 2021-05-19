@@ -1,4 +1,6 @@
+import { FormatWidth, getLocaleDateFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import * as moment from '@angular/common';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  datetime!: Date;
+  constructor(){
+
+  }
+
+  FechaActual(locale: string, width: FormatWidth){
+   //this.datetime = moment( new this.datetime.getUTCDate();
+  }
+
 
   ngOnInit(): void {
   }

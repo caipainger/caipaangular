@@ -41,4 +41,5 @@ export class QuotesService {
   removeCotizar( $key: string): void {
     this.Quoteslist.remove($key);
   }
+  
 }

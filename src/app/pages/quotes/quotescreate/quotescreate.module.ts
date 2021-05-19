@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { QuotescreateRoutingModule } from './quotescreate-routing.module';
 import { QuotescreateComponent } from './quotescreate.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { QuotescreateComponent } from './quotescreate.component';
   ],
   imports: [
     CommonModule,
-    QuotescreateRoutingModule
+    QuotescreateRoutingModule,
+    FormsModule
   ]
 })
 export class QuotescreateModule { }
