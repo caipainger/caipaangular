@@ -1,5 +1,5 @@
 <div class="container mb-3 col-md-9" *ngFor="let item of valueitem">
-    <h3 class="card-header text-capitalize">aqui {{item.$key}} </h3>
+    <h3 class="card-header text-capitalize">{{item.name}} </h3>
     <div class="card-body">
         <h5 class="card-title">{{item.tipo}}</h5>
         <h6 class="card-subtitle text-muted">{{item.quantity}}</h6>
@@ -15,5 +15,8 @@
     <div class="card-footer text-muted">
         2 days ago
     </div>
-    {{item | json}}
+
+</div>
+<div class="ui-button-text-icons">
+    <button class="btn-outline-light text-capitalize" [routerLink]="['/productcreate']">create form</button>
 </div>

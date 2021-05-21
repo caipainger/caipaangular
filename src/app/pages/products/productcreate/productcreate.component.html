@@ -45,8 +45,8 @@
             </div>
             <div class="form-group">
                 <label for="formFile" class="form-label mt-4 text-capitalize fa-percentage">insert an image</label>
-                <input class="form-control" type="file" accept=".png, .jpg, .ico, .tiff, .gif " (change)="onUpload($event)" id="formFile" name="image" #image="ngModel" [(ngModel)]="productService.selectproduct.image">
-
+                <input class="form-control" type="file" accept=".png, .jpg, .ico, .tiff, .gif " (change)="onUpload($event)" id="formFile">
+                <input type="hidden" [value]="urlImage | async" name="image" #image="ngModel" [(ngModel)]="productService.selectproduct.image">
             </div>
         </fieldset>
         <fieldset class="form-group mt-5">

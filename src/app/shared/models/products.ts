@@ -1,4 +1,4 @@
-import { Byte } from "@angular/compiler/src/util";
+import { UrlSerializer } from "@angular/router";
 import { Observable } from "rxjs";
 
 export class Products {
@@ -9,6 +9,6 @@ export class Products {
     price!: number;
     quantity!: number;
     description!: string;
-    image!: Observable<String>;
+    image!: Observable<string>;
     units!: String;
 }

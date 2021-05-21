@@ -42,7 +42,7 @@ export class ProductcreateComponent implements OnInit {
   onUpload(e: any){
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filepath = `Upload/Products/${this.products.name}`;
+    const filepath = `Upload/Products/${id}`;
     const ref = this.storage.ref(filepath);
     const task = this.storage.upload(filepath, file);
     console.log('subir ', e.target.files[0]);
