@@ -17,7 +17,7 @@ export class ProductcreateComponent implements OnInit {
   products!: Products;
   productsForm!: FormGroup;
   productsFormImage!: FormGroup;
-  uploadpercent!: Observable<number>;
+  uploadpercent!: Observable<any>;
   urlImage!: Observable<string>;
   finImage!: string;
 
@@ -47,8 +47,8 @@ export class ProductcreateComponent implements OnInit {
     const task = this.storage.upload(filepath, file);
     console.log('subir ', e.target.files[0]);
     console.log('subir ', task.snapshotChanges);
-    const uploadpercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(( )=> this.products.image = ref.getDownloadURL())).subscribe();
+    this.uploadpercent = task.percentageChanges();
+    task.snapshotChanges().pipe(finalize(( )=> this.urlImage = ref.getDownloadURL())).subscribe();
     //this.urlImage;
     //console.log(this.urlImage);
 

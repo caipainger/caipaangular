@@ -19,7 +19,7 @@ export class QuotescreateComponent implements OnInit {
   ngOnInit(): void {
   }
   onUpload(e: any){
-    
+   
   }
   onSubmit(quotesForm: NgForm){
     if (quotesForm.value.$key == null) {
