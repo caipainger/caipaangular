@@ -22,12 +22,16 @@ export class QuotesService {
     }
 
   insertCotizador(cotiza: Messages): void {
+   try {
     this.Quoteslist.push ({
       name: cotiza.name,
       product: cotiza.product,
       quantity: cotiza.quantity,
       message: cotiza.message
     });
+   } catch (error) {
+     console.log(error);
+   }
   }
   updateCotizar( cotiza: Messages): void {
     this.Quoteslist.update (cotiza.$key, {

@@ -9,6 +9,6 @@ export class Products {
     price!: number;
     quantity!: number;
     description!: string;
-    image!: Observable<string>;
+    image!: Observable<any>;
     units!: String;
 }

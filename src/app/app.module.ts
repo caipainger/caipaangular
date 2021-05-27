@@ -9,8 +9,9 @@ import { FooterModule } from './shared/components/footer/footer.module';
 import { HeaderModule } from './shared/components/header/header.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
+import { AngularFireStorageModule, BUCKET, GetDownloadURLPipeModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { environment } from 'src/environments/environment';
     HeaderModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    GetDownloadURLPipeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [{provide: BUCKET, useValue:'gs://caipaingprod.appspot.com'}],

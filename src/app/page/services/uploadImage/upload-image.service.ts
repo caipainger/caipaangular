@@ -9,7 +9,7 @@ import { UploadImageClass } from 'src/app/shared/models/upload-image-class';
 })
 export class UploadImageService {
 
-  public MEDIA_STORAGE_PATH = 'Upload';
+  public MEDIA_STORAGE_PATH = 'Upload/Products';
   constructor(private storage: AngularFireStorage) {
 
    }
@@ -18,19 +18,22 @@ export class UploadImageService {
      return `${this.MEDIA_STORAGE_PATH}/${new Date().getUTCDate()}_${name}`
    }
 
-   uploadImage(images: UploadImageClass){
-    images.uploading = true;
-    const filepath = this.generateFileName(images.name);
+   uploadImage(images: UploadImageClass[]){
+    for (const item of images) {
+    item.uploading = true;
+    const filepath = this.generateFileName(item.name);
     const fileRef = this.storage.ref(filepath);
-    const task = this.storage.upload(filepath, images.name);
-    images.uploadPercent = task.percentageChanges();
+    const task = this.storage.upload(filepath, item.name);
+    item.uploadPercent = task.percentageChanges();
     task.snapshotChanges()
     .pipe(
-      finalize(()=> {
-        images.urlImages = fileRef.getDownloadURL();
-        images.uploading = false;
+      finalize(() => {
+        item.urlImages = fileRef.getDownloadURL();
+        item.uploading = false;
 
       })
     ).subscribe();
+    console.log('aqui ta', item.urlImages);
+    }
    }
 }

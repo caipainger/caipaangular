@@ -1,4 +1,4 @@
-<div class="container col-md-8">
+<!-- <div class="container col-md-8">
     <form (ngSubmit)="onSubmit(productsForm)" #productsForm="ngForm">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectproduct.$key">
 
@@ -46,7 +46,116 @@
             <div class="form-group">
                 <label for="formFile" class="form-label mt-4 text-capitalize fa-percentage">insert an image</label>
                 <input class="form-control" type="file" accept=".png, .jpg, .ico, .tiff, .gif " (change)="onUpload($event)" id="formFile">
-                <input type="hidden" [value]="urlImage | async" name="image" #image="ngModel" [(ngModel)]="productService.selectproduct.image">
+                <input type="" [value]="urlImage | async" name="image" #image="ngModel" [(ngModel)]="productService.selectproduct.image">
+            </div>
+        </fieldset>
+        <fieldset class="form-group mt-5">
+            <div class="form-group card">
+                <button type="submit" class="btn btn-primary primary "><i class="fa fa-plus-circle "></i>   Submit</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="container col-md-8">
+    <div class="card">
+        <button class="btn btn-success m-2 text-capitalize" (click)="onGoToBack()"><i class="fa fa-plus-square-o "></i>   go back to list</button>
+    </div>
+
+</div> -->
+<div class="container col-md-8">
+    <form (ngSubmit)="onSubmit()" [formGroup]="productsForm">
+        <input type="hidden" formControlName="$key">
+
+        <fieldset>
+            <legend>Register Product </legend>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label text-capitalize">name </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext text-capitalize" formControlName="name" placeholder="insert name of product or service">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label mt-4 text-capitalize">type</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext text-capitalize" formControlName="tipo" placeholder="insert type of product or service">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label mt-4 text-capitalize">price</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext text-capitalize" formControlName="price" placeholder="insert price of product">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label col-md-2 mt-4 text-capitalize">quantity</label>
+                <select class="form-select" id="exampleSelect1" formControlName="quantity">
+              <option>1 </option>
+              <option>2 </option>
+              <option>3 </option>
+              <option>4 </option>
+              <option>5 </option>
+            </select>
+                <label class="form-label col-md-4 mt-4 text-capitalize">units</label>
+                <select class="form-select" id="exampleSelect1" formControlName="units">
+          <option> mts</option>
+          <option> unds </option>
+          <option> workforce </option>
+        </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label mt-4 text-capitalize">insert description</label>
+                <textarea class="form-control " id="exampleTextarea" formControlName="description" rows="6"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 mt-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <span>Files</span>
+                        </div>
+                        <div class="card-body ">
+                            <div class="form-group" appImagedirective [files]="uploadimages" (mouseOver)="isOverDrop = $event" [ngClass]="{ 'file-over': isOverDrop }" class="drop-zone">
+                                <h4>Drop here your images</h4>
+                                <img src="../../../assets/img/cloud.png" alt="drop-images" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>File name</th>
+                                <th>Size</th>
+                                <th>Progress</th>
+                                <th>URL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let file of uploadimages">
+                                <td>{{ file.name }}</td>
+                                <td>{{ file.file.size / 1024 / 1024 | number: ".2.2" }}MB</td>
+                                <td *ngIf="file.uploadPercent | async as uploadPercent">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-cyan" role="progessbar" [ngStyle]="{ width: uploadPercent + '%' }">
+                                            {{ uploadPercent | number: "1.0-0" }} %
+                                        </div>
+                                    </div>
+                                </td>
+                                <td *ngIf="file.urlImages | async as downloadURL">
+                                    <a [href]="downloadURL" target="_blank" formControlName="image">Download URL</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="container-buttons">
+                        <button (click)="uploadimages = []" class="btn btn-danger">Clean all</button>
+                        <button (click)="onUpload()" [disabled]="uploadimages.length === 0" class="btn btn-primary">
+                          Upload
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </fieldset>
         <fieldset class="form-group mt-5">

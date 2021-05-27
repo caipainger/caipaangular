@@ -14,7 +14,7 @@ export class ProductsService {
   productscom!: ProductcreateComponent ;
   productlist!: AngularFireList<any>;
 
-  constructor( private firebase: AngularFireDatabase) { 
+  constructor( private firebase: AngularFireDatabase) {
 
    }
    // tslint:disable-next-line: typedef

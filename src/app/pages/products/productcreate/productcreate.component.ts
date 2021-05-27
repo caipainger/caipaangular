@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireStorage, GetDownloadURLPipe } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import {  Observable } from 'rxjs/internal/Observable';
 import { finalize } from 'rxjs/operators';
 import { ProductsService } from 'src/app/page/services/products/products.service';
+import { UploadImageService } from 'src/app/page/services/uploadImage/upload-image.service';
 import { Products } from 'src/app/shared/models/products';
+import { UploadImageClass } from 'src/app/shared/models/upload-image-class';
 
 @Component({
   selector: 'app-productcreate',
@@ -16,10 +18,11 @@ export class ProductcreateComponent implements OnInit {
   valueitem: any;
   products!: Products;
   productsForm!: FormGroup;
-  productsFormImage!: FormGroup;
+  uploadimages: UploadImageClass [] = [];
   uploadpercent!: Observable<any>;
-  urlImage!: Observable<string>;
-  finImage!: string;
+  isOverDrop = false;
+  finImage!: string ;
+  public isNumber = '/^([0-9]){1-20}$/';
 
   navigationextras: NavigationExtras = {
     state: {
@@ -32,15 +35,23 @@ export class ProductcreateComponent implements OnInit {
 
   constructor(private router: Router,
               public storage: AngularFireStorage,
-              public productService: ProductsService) {
+              public productService: ProductsService,
+              public formbuild: FormBuilder,
+              public uploadImage: UploadImageService) {
     const navigation = this.router.getCurrentNavigation();
     this.valueitem = navigation?.extras?.state;
-    // this.CreateProductForm();
+    this.CreateProductForm();
   }
 
 
-  onUpload(e: any){
-    const id = Math.random().toString(36).substring(2);
+  onUpload(){
+    //this.uploadImage.uploadImage(e);
+    this.uploadImage.uploadImage(this.uploadimages);
+    for (let index of this.uploadimages) {
+      this.products.image = index.urlImages;
+      
+    }
+    /* const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filepath = `Upload/Products/${id}`;
     const ref = this.storage.ref(filepath);
@@ -48,9 +59,11 @@ export class ProductcreateComponent implements OnInit {
     console.log('subir ', e.target.files[0]);
     console.log('subir ', task.snapshotChanges);
     this.uploadpercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(( )=> this.urlImage = ref.getDownloadURL())).subscribe();
-    //this.urlImage;
-    //console.log(this.urlImage);
+    task.snapshotChanges().pipe(finalize(( ) => this.urlImage = ref.getDownloadURL())).subscribe();
+    this.finImage = this.storage.refFromURL.toString();
+    this.urlImage; */
+    console.log('algo ahi' , this.products.image);
+    
 
   }
   onCreate(): void{
@@ -63,45 +76,50 @@ export class ProductcreateComponent implements OnInit {
   onGoToBack(): void{
     this.router.navigate(['productlist']);
     }
-  // public CreateProductForm(): void{
-  //   this.productsForm = this.formbuild.group({
-  //     name: ['', Validators.required],
-  //     type: ['', Validators.required],
-  //     price: ['', Validators.required],
-  //     quantity: ['', Validators.required],
-  //     description: ['', Validators.required],
-  //     image: ['imagemap']
-  //   });
-  // }
+  public CreateProductForm(): void{
+     this.productsForm = this.formbuild.group({
+       $key: [''],
+       name: ['', Validators.required],
+       tipo: ['', Validators.required],
+       price: ['', Validators.pattern(this.isNumber)],
+       quantity: ['', Validators.pattern(this.isNumber)],
+       units: [''],
+       description: ['', Validators.required],
+       image: ['']
+     });
+   }
 
-  ngOnInit(){
+  ngOnInit(): void{
 
-    this.productService.getProduct();
+   //  this.productService.getProduct();
+ 
 
-    if (typeof  this.valueitem === 'undefined'){
+   if (typeof  this.valueitem === 'undefined'){
        this.router.navigate(['productcreate'], this.navigationextras);
      }else{
        this.productsForm = this.valueitem;
-       this.productService.updateProductos(this.products);
+       /* this.productService.updateProductos(this.products); */
        this.productsForm.setValue(this.products);
      }
   }
 
-  onSubmit(productsForm: NgForm) {
-    if (productsForm.value.$key == null) {
-      this.productService.insertProductos(productsForm.value);
+  onSubmit(): void {
+    console.log( this.productsForm.value, 'saved', this.productService.insertProductos );
+    this.productService.insertProductos(this.productsForm.value);
+    if (this.productsForm.value.$key == null) {
+      const result = this.productService.insertProductos(this.productsForm.value);
     }else {
-      this.productService.updateProductos(productsForm.value);
+      this.productService.updateProductos(this.productsForm.value);
     }
 
     // tslint:disable-next-line: no-non-null-assertion
-    this.resetForm(productsForm);
-    //console.log( this.urlImage);
+    this.resetForm(this.productsForm);
+    //console.log( this.urlImage); 
 
   }
-  resetForm(productsForm?: NgForm) {
+  resetForm(productsForm: FormGroup): void {
     if (productsForm != null) {
-      productsForm.reset();
+      this.productsForm.reset();
       this.productService.selectproduct = new Products();
     }
   }
