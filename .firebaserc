@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "caipaingprod": {
+      "hosting": {
+        "caipaangular": [
+          "caipaingprod"
+        ]
+      }
+    }
+  }
+}

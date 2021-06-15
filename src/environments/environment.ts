@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyAUoXQsDA7Ejm5j773XKs_0HhvxxnYQRJ4',
+    authDomain: 'caipaingprod.firebaseapp.com',
+    databaseURL: 'https://caipaingprod-default-rtdb.firebaseio.com',
+    projectId: 'caipaingprod',
+    storageBucket: 'caipaingprod.appspot.com',
+    messagingSenderId: '379171518647',
+    appId: '1:379171518647:web:436813474e123d34c2b532',
+    measurementId: 'G-9NJ629PE8R'
+  }
 };
 
 /*
