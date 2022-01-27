@@ -10,7 +10,9 @@ import { ProductcreateComponent } from '../productcreate/productcreate.component
   styleUrls: ['./productdetails.component.scss']
 })
 export class ProductdetailsComponent implements OnInit {
-  valueitem: any = null;
+  valueitem: any ;
+  imageNumber: any[] = [];
+  json: any;
   productscom!: ProductcreateComponent ;
   navigationextras: NavigationExtras = {
     state: {
@@ -20,23 +22,32 @@ export class ProductdetailsComponent implements OnInit {
   constructor(private router: Router, private productService: ProductsService) {
     const navigation = this.router.getCurrentNavigation();
     this.valueitem = navigation?.extras?.state;
+    let i = 0;
+    let archivos = Object.values( this.valueitem.imageProduct).length;
+    //alert(archivos);
+    for (let i = 1; i<archivos; i++ ) {
+      this.imageNumber [i-1] = i;
+        
+      }
+      //alert(this.imageNumber)
   }
 
   ngOnInit() {
 
   }
-  onGoToEdit(valueitem: Products){
-    this.productService.updateProductos(valueitem) ;
+  onGoToEdit(item: Products){
+    this.navigationextras.state = item;
     this.router.navigate(['productcreate'], this.navigationextras);
-    alert('esto es lo que hay  ' + valueitem.$key + ' ');
+    alert('esto es lo que hay  ' + item.Id + ' ');
   }
   onGoToCreate(){
 
     this.router.navigate(['productcreate']);
   }
   onGoToDelete(item: Products){
-    this.productService.removeProductos(item.$key);
+    this.productService.deleteProductList(item.Id!);
     alert('has been deleted succesfull' + this.navigationextras);
+    this.router.navigate(['productlist']);
   }
   onGoToBack(){
     this.router.navigate(['productlist']);

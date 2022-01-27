@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 import { Messages } from 'src/app/shared/models/messages';
 import { Products } from 'src/app/shared/models/products';
 
@@ -9,7 +10,7 @@ import { Products } from 'src/app/shared/models/products';
 export class QuotesService {
   // tslint:disable-next-line: new-parens
   selectQuotes: Messages = new Messages();
-  selectProduct: Products = new Products();
+  selectProduct!: Observable<Products[]>;
 
   Quoteslist!: AngularFireList<any>;
 
