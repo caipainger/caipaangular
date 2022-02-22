@@ -6,20 +6,25 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { FooterModule } from './shared/components/footer/footer.module';
 import { HeaderModule } from './shared/components/header/header.module';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireStorageModule, BUCKET, GetDownloadURLPipeModule } from '@angular/fire/storage';
+import {
+  AngularFireStorageModule,
+  BUCKET,
+  GetDownloadURLPipeModule,
+} from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
+    MDBBootstrapModule,
     BrowserModule,
     AppRoutingModule,
     FooterModule,
@@ -27,9 +32,12 @@ import { environment } from 'src/environments/environment';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     GetDownloadURLPipeModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [{provide: BUCKET, useValue: 'gs://caipaingprod.appspot.com'}, AngularFirestore],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: BUCKET, useValue: 'gs://caipaingprod.appspot.com' },
+    AngularFirestore,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

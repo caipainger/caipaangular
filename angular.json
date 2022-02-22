@@ -32,21 +32,13 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
-              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
-              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
-              "node_modules/animate.css/animate.css"
+              "node_modules/mdb-ui-kit/src/scss/mdb.free.scss"
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/chart.js/dist/Chart.js",
-              "node_modules/hammerjs/hammer.min.js",
-              "node_modules/angular-bootstrap-md/esm2015/angular-bootstrap-md.js",
-              "node_modules/angular-bootstrap-md/fesm2015/angular-bootstrap-md.js"
+              "node_modules/mdb-ui-kit/js/mdb.min.js"
             ]
           },
           "configurations": {
