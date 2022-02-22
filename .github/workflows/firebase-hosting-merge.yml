@@ -11,13 +11,13 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@release
-      - uses: actions/setup-node@release
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
       - run: npm install
       - run: npm run build:prod
-      - uses: FirebaseExtended/action-hosting-deploy@release
+      - uses: FirebaseExtended/action-hosting-deploy@v2
         with:
           args: deploy --only hosting
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
