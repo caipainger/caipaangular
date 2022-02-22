@@ -1,5 +1,3 @@
-import { UrlSerializer } from "@angular/router";
-import { Observable } from "rxjs";
 
 export interface Products {
     Id?: string;
@@ -9,5 +7,5 @@ export interface Products {
     quantity: number;
     description: string;
     imageProduct: any[];
-    units: String;
+    units: string;
 }

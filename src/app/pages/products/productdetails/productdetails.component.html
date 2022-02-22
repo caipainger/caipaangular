@@ -1,49 +1,88 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src={{valueitem.imageProduct[0]}} class="d-block w-100" alt="Wild Landscape" height="100%" width="50rem"/>
-                  </div>
-                  <div *ngFor="let item of imageNumber " class="carousel-item">
-                    <img src={{valueitem.imageProduct[item]}} class="d-block w-100" alt="Camera" height="100%" width="50rem"/>
-                  </div>
-                  
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-        </div>
-    </div>
-</div>
-<div class="container col-md-8">
-    <h3 class="card-header text-capitalize"> Details of products</h3>
+<div class="container mb-3 col-md-10">
+  <div class="container col-md-8">
+    <h3 class="card-header text-capitalize">Details of products</h3>
     <div class="card-body">
-        <h5 class="card-title">{{valueitem.name}} </h5>
+      <h5 class="card-title">{{ valueitem.name }}</h5>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-mdb-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item-start">
+              <img
+                src="{{ valueitem.imageProduct[0] }}"
+                class="d-block w-100 h-auto"
+              />
+            </div>
+            <div *ngFor="let item of imageNumber" class="carousel-item">
+              <img
+                src="{{ valueitem.imageProduct[item] }}"
+                class="d-block w-100 h-auto"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-mdb-target="#carouselExampleControls"
+            data-mdb-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-mdb-target="#carouselExampleControls"
+            data-mdb-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item border-none"> {{valueitem.tipo}} </li>
-        <li class="list-group-item">{{valueitem.quantity}}</li>
-        <li class="list-group-item">{{valueitem.description}}</li>
+      <li class="list-group-item border-none">{{ valueitem.tipo }}</li>
+      <li class="list-group-item">{{ valueitem.quantity }}</li>
+      <li class="list-group-item">{{ valueitem.description }}</li>
     </ul>
     <div class="card-body">
-        <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToEdit(valueitem)">edit product</button>
-        <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToDelete(valueitem)">delete product</button>
+      <button
+        class="btn btn-outline-primary m-2 text-capitalize"
+        (click)="onGoToEdit(valueitem)"
+      >
+        edit product
+      </button>
+      <button
+        class="btn btn-outline-primary m-2 text-capitalize"
+        (click)="onGoToDelete(valueitem)"
+      >
+        delete product
+      </button>
     </div>
-    <div class="card-footer text-muted">
-        2 days ago
-    </div>
+    <div class="card-footer text-muted">2 days ago</div>
+  </div>
 </div>
-<div class="container col-md-8">
+<div class="container mb-3 col-md-10">
+  <div class="container col-md-8">
     <div class="card-body">
-        <button class="btn btn-outline-success m-2 text-capitalize" (click)="onGoToBack()">go back to list</button>
-        <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToCreate()">create product</button>
+      <button
+        class="btn btn-outline-success m-2 text-capitalize"
+        (click)="onGoToBack()"
+      >
+        go back to list
+      </button>
+      <button
+        class="btn btn-outline-primary m-2 text-capitalize"
+        (click)="onGoToCreate()"
+      >
+        create product
+      </button>
     </div>
+  </div>
 </div>

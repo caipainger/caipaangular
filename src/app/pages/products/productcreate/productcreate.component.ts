@@ -41,14 +41,14 @@ export class ProductcreateComponent implements OnInit {
     this.CreateProductForm();
   }
 
-  onUpload(e: any) {
+  onUpload(e: any): void {
     this.name = e.target.value;
     console.log(this.name);
   }
-  onUploadImage(event: any) {
-    let archivos = event.target.files;
+  onUploadImage(event: any): void {
+    const archivos = event.target.files;
     for (let i = 0; i < archivos.length; i++) {
-      let reader = new FileReader();
+      const reader = new FileReader();
       console.log(this.uploadImage + '\n');
       reader.readAsDataURL(archivos[i]);
       reader.onloadend = () => {
@@ -69,11 +69,9 @@ export class ProductcreateComponent implements OnInit {
     this.router.navigate(['productcreate']);
   }
   onGoToDelete(valueitem: Products): void {
-    this.productService.deleteProductList(valueitem.Id!);
-    console.log(
-      'has been deleted succesfull' +
-        this.productService.deleteProductList(valueitem.Id!)
-    );
+    // tslint:disable-next-line:no-non-null-assertion
+    this.productService.deleteProductList( valueitem.Id! );
+
   }
   onGoToBack(): void {
     this.router.navigate(['productlist']);
@@ -94,22 +92,20 @@ export class ProductcreateComponent implements OnInit {
     if (typeof this.valueitem === 'undefined') {
       this.router.navigate(['productcreate']);
     } else {
-      //this.urlImagen = this.valueitem.imageProduct.value;
-      let countImage = Object.values(this.valueitem.imageProduct).length;
-      let archivos = Object.values(this.valueitem.imageProduct);
+      // this.urlImagen = this.valueitem.imageProduct.value;
+      const countImage = Object.values(this.valueitem.imageProduct).length;
+      const archivos = Object.values(this.valueitem.imageProduct);
       for (let i = 0; i < countImage; i++) {
         this.finImage[i] = archivos[i];
         this.urlImagen[i] = archivos[i];
       }
-      
       console.log(archivos);
-  
       alert(this.finImage);
       this.productsForm.patchValue(this.valueitem);
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     for (let i = 0; i < this.urlImagen.length; i++) {
       this.productsForm.value.imageProduct[i] = this.urlImagen[i];
       console.log(
@@ -124,7 +120,7 @@ export class ProductcreateComponent implements OnInit {
       console.log(this.productsForm.value);
       const product = this.productsForm.value;
       const productId = this.valueitem?.Id || null;
-      this.productService.insertProductList(product, productId!);
+      this.productService.insertProductList(product, productId);
       this.resetForm(this.productsForm);
       this.router.navigate(['productlist']);
     }
@@ -132,7 +128,7 @@ export class ProductcreateComponent implements OnInit {
   resetForm(productsForm: FormGroup): void {
     if (productsForm != null) {
       this.productsForm.reset();
-      //this.productService.selectproduct =  this.valueitem;
+      // this.productService.selectproduct =  this.valueitem;
     }
   }
 }
