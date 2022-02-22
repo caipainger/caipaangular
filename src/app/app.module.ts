@@ -29,7 +29,7 @@ import { environment } from 'src/environments/environment';
     GetDownloadURLPipeModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [{provide: BUCKET, useValue:'gs://caipaingprod.appspot.com'}, AngularFirestore],
+  providers: [{provide: BUCKET, useValue: 'gs://caipaingprod.appspot.com'}, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
