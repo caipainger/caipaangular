@@ -4,7 +4,8 @@
         <h5 class="card-title">{{item.tipo}}</h5>
         <h6 class="card-subtitle text-muted">{{item.quantity}}</h6>
     </div>
-    <img src={{item.imageProduct[1]}} style="height: 25rem; width: 35rem;" alt="">
+    <div class="img-fluid" max-width="70%" heigth="auto">
+        <img src={{item.imageProduct[1]}} class="rounded hover-shadow"  alt=""></div>
     <div class="card-body">
         <button class="btn btn-primary m-2 text-capitalize" (click)="onGoToDetails(item)">details</button>
 
