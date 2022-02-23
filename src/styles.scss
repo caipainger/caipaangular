@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 /**/
-@import "~mdb-ui-kit/src/scss/mdb.free.scss";
+@import "~bootswatch/dist/lumen/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/lumen/bootswatch";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";

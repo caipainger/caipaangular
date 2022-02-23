@@ -32,13 +32,14 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
-              "node_modules/mdb-ui-kit/src/scss/mdb.free.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
 
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/mdb-ui-kit/js/mdb.min.js"
+              "node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/@popperjs/core/lib/popper.js",
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {
