@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['/productlist']"
+          <a class="nav-link active" [routerLink]="['/productlist']" 
             >Products
             <span class="visually-hidden">(current)</span>
           </a>
@@ -55,10 +55,10 @@
         <ng-template #login>
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/login">Login</a>
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/register">Register</a>
+              <a class="nav-link" [routerLink]="['/register']">Register</a>
             </li>
           </ul>
         </ng-template>
