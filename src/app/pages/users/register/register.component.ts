@@ -15,13 +15,13 @@ export class RegisterComponent implements OnInit {
 
   users!: Users;
   constructor(private router: Router,
-    public firebase: AngularFireDatabase,
-    public storage: AngularFireStorage,
-    private userServices: UsersService) { }
+              public firebase: AngularFireDatabase,
+              public storage: AngularFireStorage,
+              private userServices: UsersService) { }
 
   ngOnInit(): void {
   }
-  onSubmit( registerForm: NgForm){
+  onSubmit( registerForm: NgForm): any {
     if (registerForm.value.$key == null) {
       this.userServices.insertUser(registerForm.value);
     }else {
@@ -30,16 +30,16 @@ export class RegisterComponent implements OnInit {
 
     // tslint:disable-next-line: no-non-null-assertion
     this.resetForm(registerForm);
-    //console.log( this.urlImage);
+    // console.log( this.urlImage);
   }
-  resetForm(registerForm?: NgForm){
+  resetForm(registerForm?: NgForm): any{
     if (registerForm != null) {
       registerForm.reset();
       this.userServices.users = new Users();
-     
+
     }
   }
-  onGoToBack(){
+  onGoToBack(): any{
     this.router.navigate(['login']);
   }
 

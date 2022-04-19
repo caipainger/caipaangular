@@ -14,14 +14,14 @@ export class QuotescreateComponent implements OnInit {
   quotes!: Messages;
   quotesForm!: FormGroup;
   constructor(private router: Router,
-    public quotesService: QuotesService) { }
+              public quotesService: QuotesService) { }
 
   ngOnInit(): void {
   }
-  onUpload(e: any){
-   
+  onUpload(e: any): any{
+
   }
-  onSubmit(quotesForm: NgForm){
+  onSubmit(quotesForm: NgForm): any{
     if (quotesForm.value.$key == null) {
       this.quotesService.insertCotizador(quotesForm.value);
     }else {
@@ -30,16 +30,16 @@ export class QuotescreateComponent implements OnInit {
 
     // tslint:disable-next-line: no-non-null-assertion
     this.resetForm(quotesForm);
-    //console.log( this.urlImage);
+    // console.log( this.urlImage);
   }
-  onGoToBack(){
-    
+  onGoToBack(): any{
+
   }
-  resetForm(quotesForm?: NgForm) {
+  resetForm(quotesForm?: NgForm): any {
     if (quotesForm != null) {
       quotesForm.reset();
       this.quotesService.selectQuotes = new Messages();
-     
+
     }
   }
 

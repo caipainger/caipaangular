@@ -1,9 +1,9 @@
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 export class UploadImageClass {
     public name!: string;
     public imageBase64: any;
-    public uploading: boolean = false;
+    public uploading = false;
     public uploadPercent!: Observable<any>;
     public urlImages!: Observable<string>;
 

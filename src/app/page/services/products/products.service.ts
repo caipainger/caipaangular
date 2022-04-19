@@ -16,22 +16,21 @@ export class ProductsService {
   selectproduct!: Observable <Products[]> ;
   productscom!: ProductcreateComponent ;
   productlist!: AngularFireList<Products>;
-  private productsCollection!: AngularFirestoreCollection<Products>
-
+  private productsCollection!: AngularFirestoreCollection<Products>;
   constructor( private firebase: AngularFireDatabase, private firestore: AngularFirestore) {
     this.productsCollection = firestore.collection<Products>('products');
     this.getProductList();
    }
    // tslint:disable-next-line: typedef
 
-   getProductList(): void{  
+   getProductList(): void{
      this.selectproduct = this.productsCollection.snapshotChanges().pipe(
        map(actions => actions.map(a => a.payload.doc.data()as Products))
      );
     }
-   insertProductList( products: Products, prodId: string): Promise<void>{ 
+   insertProductList( products: Products, prodId: string): Promise<void>{
      console.log(products);
-     return new Promise(async (resolve, reject) =>{
+     return new Promise(async (resolve, reject) => {
        try {
          const Id = prodId || this.firestore.createId();
          const data = {Id, ...products};
@@ -42,12 +41,12 @@ export class ProductsService {
        }
      });
      }
-   //updateProductList($key: string): Promise<void>{   }
-   deleteProductList(prodId: string): Promise<void>{ 
-    return new Promise(async (resolve, reject) =>{
+   // updateProductList($key: string): Promise<void>{   }
+   deleteProductList(prodId: string): Promise<void>{
+    return new Promise(async (resolve, reject) => {
       try {
-        //const Id = prodId || this.firestore.createId();
-        //const data = {Id, ...products};
+        // const Id = prodId || this.firestore.createId();
+        // const data = {Id, ...products};
         const result = await this.productsCollection.doc(prodId).delete();
         resolve(result);
       } catch (err) {
@@ -55,19 +54,19 @@ export class ProductsService {
       }
     });
      }
-   getProduct(){
+   getProduct(): any{
    return this.productlist = this.firebase.list('Products');
   }
 
-  convertImages(image: any){
-    var file = image;
-    var pattern = /image-*/;
-    var reader = new FileReader();
+  convertImages(image: any): any{
+    const file = image;
+    const pattern = /image-*/;
+    const reader = new FileReader();
     if (!file.byte.match(pattern)) {
       alert('invalid format');
       return;
     }else{
-      
+
     }
   }
 }

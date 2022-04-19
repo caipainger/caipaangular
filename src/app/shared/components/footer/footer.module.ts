@@ -1,15 +1,13 @@
-import { NgModule, Pipe } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    Pipe
+    CommonModule, RouterModule
   ]
 })
-export class FooterModule {
- 
- }
+export class FooterModule {}
