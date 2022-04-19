@@ -14,8 +14,8 @@ export class FooterComponent implements OnInit {
 
   }
 
-  FechaActual(locale: string, width: FormatWidth){
-   //this.datetime = moment( new this.datetime.getUTCDate();
+  FechaActual(locale: string, width: FormatWidth): any{
+   // this.datetime = moment( new this.datetime.getUTCDate();
   }
 
 

@@ -10,6 +10,9 @@
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js",
               
+              // "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/@popperjs/core/lib/popper.js",
+              
 
               
 @import "~animate.css/animate.min.css";

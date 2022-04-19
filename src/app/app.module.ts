@@ -6,7 +6,6 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { FooterModule } from './shared/components/footer/footer.module';
 import { HeaderModule } from './shared/components/header/header.module';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -28,7 +27,6 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     FooterModule,
     HeaderModule,
-    MdbCarouselModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     GetDownloadURLPipeModule,

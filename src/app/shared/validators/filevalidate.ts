@@ -1,13 +1,13 @@
-import { UploadImageClass } from "../models/upload-image-class";
+import { UploadImageClass } from '../models/upload-image-class';
 
 export class Filevalidate {
-    private aceptType =[
-        'image/jpg', 
-        'image/png', 
-        'image/tiff',    
-        'image/ico', 
+    private aceptType = [
+        'image/jpg',
+        'image/png',
+        'image/tiff',
+        'image/ico',
         'image/jpeg'
-    ]
+    ];
     validateType(fileType: string): boolean{
         return fileType === '' || fileType === undefined
         ? false
