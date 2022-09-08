@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { UntypedFormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuotesService } from 'src/app/page/services/quotes/quotes.service';
 import { Messages } from 'src/app/shared/models/messages';
@@ -12,7 +12,7 @@ import { Messages } from 'src/app/shared/models/messages';
 export class QuotescreateComponent implements OnInit {
 
   quotes!: Messages;
-  quotesForm!: FormGroup;
+  quotesForm!: UntypedFormGroup;
   constructor(private router: Router,
               public quotesService: QuotesService) { }
 
