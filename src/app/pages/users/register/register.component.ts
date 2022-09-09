@@ -15,13 +15,8 @@ export class RegisterComponent implements OnInit {
 
   users!: Users;
   constructor(private router: Router,
-<<<<<<< HEAD
               public firebase: Database,
               public storage: Storage,
-=======
-              public firebase: AngularFireDatabase,
-              public storage: AngularFireStorage,
->>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
               private userServices: UsersService) { }
 
   ngOnInit(): void {
