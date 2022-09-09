@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class UploadImageClass {\n  constructor(file = file) {\n    this.file = file;\n    this.uploading = false;\n    this.name = file.name;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
