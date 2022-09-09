@@ -33,7 +33,11 @@ export class ProductcreateComponent implements OnInit {
     private router: Router,
     public storage: AngularFireStorage,
     public productService: ProductsService,
+<<<<<<< HEAD
     public formbuild: UntypedFormBuilder,
+=======
+    public formbuild: FormBuilder,
+>>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
     public uploadImage: UploadImageService
   ) {
     const navigation = this.router.getCurrentNavigation();

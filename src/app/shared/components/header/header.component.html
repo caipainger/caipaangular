@@ -23,16 +23,27 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link active" routerLink="['/productlist']" 
+=======
+          <a class="nav-link active" [routerLink]="['/productlist']" 
+>>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
             >Products
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link active" routerLink="['/qoutescreate']">Quotes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" routerLink="['/productcreate']"
+=======
+          <a class="nav-link active" [routerLink]="['/qoutescreate']">Quotes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/productcreate']"
+>>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
             >Register a product</a
           >
         </li>
@@ -41,7 +52,11 @@
       <div class="d-flex" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active" *ngIf="users">
+<<<<<<< HEAD
             <a class="nav-link" routerLink="['/upload-image']">Upload</a>
+=======
+            <a class="nav-link" [routerLink]="['/upload-image']">Upload</a>
+>>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
           </li>
         </ul>
         <ul class="navbar-nav mx-auto" *ngIf="users != null; else login">
@@ -49,16 +64,27 @@
             <a href="#" class="nav-link" (click)="onLogout()">Logout</a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link"> {{users?.email}}</a>
+=======
+            <a class="nav-link"> {{ users?.email }}</a>
+>>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
           </li>
         </ul>
         <ng-template #login>
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
+<<<<<<< HEAD
               <a class="nav-link" routerLink="['/login']">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="['/register']">Register</a>
+=======
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']">Register</a>
+>>>>>>> 03f0f28ce081d2b25caab136eb566c8c6479cd9d
             </li>
           </ul>
         </ng-template>
