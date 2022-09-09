@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { Database } from '@angular/fire/database';
+import { Storage } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/page/services/users/users.service';
@@ -15,8 +15,8 @@ export class RegisterComponent implements OnInit {
 
   users!: Users;
   constructor(private router: Router,
-              public firebase: AngularFireDatabase,
-              public storage: AngularFireStorage,
+              public firebase: Database,
+              public storage: Storage,
               private userServices: UsersService) { }
 
   ngOnInit(): void {
