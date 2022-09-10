@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
-import firebase from 'firebase/app';
+import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/compat/storage';
+import firebase from 'firebase/compat/app';
 import { finalize } from 'rxjs/operators';
 import { UploadImageClass } from 'src/app/shared/models/upload-image-class';
 
@@ -30,19 +30,25 @@ export class UploadImageService {
     const fileRef = this.storage.ref(filepath);
     const task = this.storage.upload(filepath, item.name, item.imageBase64);
     item.uploadPercent = task.percentageChanges();
-    task.snapshotChanges()
-    .pipe(
-      finalize(() => {
-        item.urlImages = fileRef.getDownloadURL();
-        item.uploading = false;
-
-      })
+    task.snapshotChanges().pipe(
+      imageFunction(item, fileRef)
     ).subscribe();
     console.log('aqui ta', item.urlImages);
     }
+
+     function imageFunction(this: any, item: UploadImageClass, fileRef: AngularFireStorageReference) {
+       return this.urlMethod(item, fileRef);
+     }
    }
 
-   async createImage(nombre: string, imageBase64: any){
+  private urlMethod(item: UploadImageClass, fileRef: AngularFireStorageReference) {
+    return finalize(() => {
+      item.urlImages = fileRef.getDownloadURL();
+      item.uploading = false;
+    });
+  }
+
+   async createImage(nombre: string, imageBase64: string | any): Promise<any>{
    try {
     const filepath = this.generateFileName(nombre);
      let respuesta = await this.storageRef.child(filepath).putString(imageBase64,'data_url');

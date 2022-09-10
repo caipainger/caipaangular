@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage, GetDownloadURLPipe } from '@angular/fire/storage';
+import { Storage, getDownloadURL } from '@angular/fire/storage';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -31,9 +31,9 @@ export class ProductcreateComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public storage: AngularFireStorage,
+    public storage: Storage,
     public productService: ProductsService,
-    public formbuild: FormBuilder,
+    public formbuild: UntypedFormGroup,
     public uploadImage: UploadImageService
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -54,7 +54,7 @@ export class ProductcreateComponent implements OnInit {
       reader.onloadend = () => {
         this.finImage.push(reader.result);
         this.uploadImage
-          .createImage(this.name, reader.result)
+          .createImage(this.name, reader.result?.toString())
           .then((urlImage) => {
             this.urlImagen[i] = urlImage;
             console.log(urlImage + '\n' + this.urlImagen[i]);
@@ -77,7 +77,7 @@ export class ProductcreateComponent implements OnInit {
     this.router.navigate(['productlist']);
   }
   public CreateProductForm(): void {
-    this.productsForm = this.formbuild.group({
+    this.productsForm = this.formbuild.value({
       name: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.pattern(this.isNumber)]],

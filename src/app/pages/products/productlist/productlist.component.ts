@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireList, Database } from '@angular/fire/database';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/compat/database';
 import { NavigationExtras, Router } from '@angular/router';
 import { ProductsService } from 'src/app/page/services/products/products.service';
 import { Products } from 'src/app/shared/models/products';
@@ -21,7 +21,7 @@ export class ProductlistComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private firebase: Database,
+    private firebase: AngularFireDatabase,
     public productService: ProductsService
   ) {}
 

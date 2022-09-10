@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/compat/database';
 import { Users } from 'src/app/shared/models/users';
 
 @Injectable({

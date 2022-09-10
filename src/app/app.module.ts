@@ -6,14 +6,14 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { FooterModule } from './shared/components/footer/footer.module';
 import { HeaderModule } from './shared/components/header/header.module';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {
   AngularFireStorageModule,
   BUCKET,
   GetDownloadURLPipeModule,
-} from '@angular/fire/storage';
+} from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
