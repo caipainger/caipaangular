@@ -21,15 +21,11 @@ export class ProductsService {
   constructor( private firebase: AngularFireDatabase, private firestore: AngularFirestore, private frs: Firestore) {
     this.getProductList();
    }
-   // tslint:disable-next-line: typedef
 
    getProductList(): void{
     this.productsCollection = collection(this.frs,'products');
       this.selectproduct = collectionData(this.productsCollection, {idField: 'id'}) as Observable<Products[]>;
-      this.selectproduct.subscribe(a => {
-        console.log(a.map(b => b.Id +"\n"+b.description +"\n"+b.imageProduct +"\n"+b.name +"\n"+b.quantity +"\n"+b.tipo +"\n"+b.units))
-      });
-    
+          
     }
    insertProductList( products: Products, prodId: string): Promise<void>{
      console.log(products);
@@ -37,7 +33,7 @@ export class ProductsService {
        try {
          const Id = prodId || this.firestore.createId();
          const data = {Id, ...products};
-         const result = await this.productsCollection.update(data);
+         const result = await this.productsCollect.doc(Id).set(data);
          resolve(result);
        } catch (err) {
          reject(err);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage, getDownloadURL } from '@angular/fire/storage';
-import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
+import { AngularFireStorageModule, GetDownloadURLPipeModule } from '@angular/fire/compat/storage';
+import { UntypedFormBuilder, UntypedFormGroup,  Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProductsService } from 'src/app/page/services/products/products.service';
@@ -31,7 +31,7 @@ export class ProductcreateComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public storage: Storage,
+    public storage: AngularFireStorageModule,
     public productService: ProductsService,
     public formbuild: UntypedFormGroup,
     public uploadImage: UploadImageService
@@ -47,18 +47,19 @@ export class ProductcreateComponent implements OnInit {
   }
   onUploadImage(event: any): void {
     const archivos = event.target.files;
-    for (let i = 0; i < archivos.length; i++) {
+    for(const i of archivos) {
       const reader = new FileReader();
       console.log(this.uploadImage + '\n');
-      reader.readAsDataURL(archivos[i]);
+      reader.readAsDataURL(i);
       reader.onloadend = () => {
         this.finImage.push(reader.result);
-        this.uploadImage
-          .createImage(this.name, reader.result?.toString())
-          .then((urlImage) => {
-            this.urlImagen[i] = urlImage;
-            console.log(urlImage + '\n' + this.urlImagen[i]);
-          });
+        // this.uploadImage
+        //   .createImage(this.name, reader.result)
+        //   .then((urlImage) => {
+        //     this.urlImagen.push(urlImage);
+        //     console.log(urlImage + '\n' + this.urlImagen);
+        //   });
+          
         console.log(this.uploadImage + '\n');
       };
     }
@@ -89,6 +90,7 @@ export class ProductcreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.valueitem);
     if (typeof this.valueitem === 'undefined') {
       this.router.navigate(['productcreate']);
     } else {

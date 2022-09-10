@@ -17,6 +17,8 @@ import {
 import { environment } from 'src/environments/environment';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideStorage } from '@angular/fire/storage';
+import { getStorage } from 'firebase/storage';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     HeaderModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     GetDownloadURLPipeModule,
