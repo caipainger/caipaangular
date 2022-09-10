@@ -1,33 +1,33 @@
 <div class="container mb-3 col-md-9" >
-    <div class="card border-0" *ngFor="let item of valueitem$ | async">
-      <h3 class="card-header text-capitalize">{{ item.name }}</h3>
-      <div class="card-body">
-        <h5 class="card-title">{{ item.tipo }}</h5>
-        <h6 class="card-subtitle text-muted">{{ item.quantity }}</h6>
-      </div>
-      <div class="img-fluid mb-3 col-md-9">
-        <img
-          src="{{ item.imageProduct[0] }}"
-          class="rounded hover-shadow w-75 h-auto"
-          alt=""
-        />
-      </div>
-      <div class="card-body">
-        <button
-          class="btn btn-primary m-2 text-capitalize"
-          (click)="onGoToDetails(item)"
-        >
-          details
-        </button>
-      </div>
-      <div class="card-footer text-muted">2 days ago</div>
+  <div class="card border-0" *ngFor="let item of valueitem$ | async">
+    <h3 class="card-header text-capitalize">{{ item.name }}</h3>
+    <div class="card-body">
+      <h5 class="card-title">{{ item.tipo }}</h5>
+      <h6 class="card-subtitle text-muted">{{ item.quantity }}</h6>
     </div>
-    <div class="ui-button-text-icons">
+    <div class="img-fluid mb-3 col-md-9">
+      <img
+        src="{{ item.imageProduct[0] }}"
+        class="rounded hover-shadow w-75 h-auto"
+        alt=""
+      />
+    </div>
+    <div class="card-body">
       <button
-        class="btn-outline-light text-capitalize"
-        [routerLink]="['/productcreate']"
+        class="btn btn-primary m-2 text-capitalize"
+        (click)="onGoToDetails(item)"
       >
-        create form
+        details
       </button>
     </div>
+    <div class="card-footer text-muted">2 days ago</div>
+  </div>
+  <div class="ui-button-text-icons">
+    <button
+      class="btn-outline-light text-capitalize"
+      [routerLink]="['/productcreate']"
+    >
+      create form
+    </button>
+  </div>
 </div>

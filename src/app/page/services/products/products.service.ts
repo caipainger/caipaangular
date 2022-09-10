@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireList , AngularFireDatabase } from '@angular/fire/compat/database';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { collectionData, collection, Firestore } from '@angular/fire/firestore'
+import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductcreateComponent } from 'src/app/pages/products/productcreate/productcreate.component';
@@ -12,20 +13,22 @@ import { Products } from 'src/app/shared/models/products';
 export class ProductsService {
 
 
-  selectproduct!: Observable<Products[]> ;
+  selectproduct!: Observable<Products[]>;
   productscom!: ProductcreateComponent ;
   productlist!: AngularFireList<Products>;
-  private productsCollection!: AngularFirestoreCollection<Products>;
-  constructor( private firebase: AngularFireDatabase, private firestore: AngularFirestore) {
-    this.productsCollection = firestore.collection<Products>('products');
+  private productsCollect!: AngularFirestoreCollection<Products>;
+  private productsCollection!: any;
+  constructor( private firebase: AngularFireDatabase, private firestore: AngularFirestore, private frs: Firestore) {
     this.getProductList();
    }
    // tslint:disable-next-line: typedef
 
    getProductList(): void{
-     this.productsCollection = this.firestore.collection<Products>('products');
-     this.selectproduct = this.productsCollection.snapshotChanges().pipe(
-      map(actions => actions.map((a: { payload: { doc: { data: () => Products; }; }; }) => a.payload.doc.data() as Products)));
+    this.productsCollection = collection(this.frs,'products');
+      this.selectproduct = collectionData(this.productsCollection, {idField: 'id'}) as Observable<Products[]>;
+      this.selectproduct.subscribe(a => {
+        console.log(a.map(b => b.Id +"\n"+b.description +"\n"+b.imageProduct +"\n"+b.name +"\n"+b.quantity +"\n"+b.tipo +"\n"+b.units))
+      });
     
     }
    insertProductList( products: Products, prodId: string): Promise<void>{
@@ -34,7 +37,7 @@ export class ProductsService {
        try {
          const Id = prodId || this.firestore.createId();
          const data = {Id, ...products};
-         const result = await this.productsCollection.doc(Id).set(data);
+         const result = await this.productsCollection.update(data);
          resolve(result);
        } catch (err) {
          reject(err);
@@ -47,7 +50,7 @@ export class ProductsService {
       try {
         // const Id = prodId || this.firestore.createId();
         // const data = {Id, ...products};
-        const result = await this.productsCollection.doc(prodId).delete();
+        const result = await this.productsCollect.doc(prodId).delete();
         resolve(result);
       } catch (err) {
         reject(err);

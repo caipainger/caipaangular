@@ -15,6 +15,8 @@ import {
   GetDownloadURLPipeModule,
 } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     FooterModule,
     HeaderModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     GetDownloadURLPipeModule,
@@ -34,7 +38,7 @@ import { environment } from 'src/environments/environment';
   ],
   providers: [
     { provide: BUCKET, useValue: 'gs://caipaingprod.appspot.com' },
-    AngularFirestore,
+    AngularFirestore
   ],
   bootstrap: [AppComponent],
 })

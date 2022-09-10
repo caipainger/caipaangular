@@ -1,70 +1,32 @@
-<div class="container col-md-8">
+
+<div class="container ">
   <h3 class="card-header text-capitalize"> Details of products</h3>
   <div class="card-body">
     <h5 class="card-title">{{valueitem.name}} </h5>
   </div>
-  <div class="container align-items-lg-center">
-    <div class="row">
-      <div class="align-content-center">
-        <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
-          <div class="carousel-inner">
-            <!-- <div class="carousel-item active">
-              <img src={{valueitem.imageProduct[0]}} class="d-block w-100" alt="Wild Landscape" />
-            </div> -->
-            <div *ngFor="let item of valueitem.imageProduct let i = index" [ngClass]="{'active': i == 0}"
-              class="carousel-item" data-mdb-interval="2000">
-              <img src={{item}} class="d-block w-100" alt="Camera" />
-            </div>
-
-          </div>
-          <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls"
-            data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls"
-            data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+  <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
+    <mdb-carousel-item *ngFor="let item of valueitem.imageProduct let i = index" [ngClass]="{'active': i == 0}"
+      class="carousel-item w-75" data-mdb-interval="2000">
+      <img src={{item}} class="d-block w-100" alt="Camera" />
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item border-none"> {{valueitem.tipo}} </li>
+        <li class="list-group-item">{{valueitem.quantity}}</li>
+        <li class="list-group-item">{{valueitem.description}}</li>
+      </ul>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToEdit(valueitem)">edit product</button>
+        <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToDelete(valueitem)">delete
+          product</button>
       </div>
-    </div>
-  </div>
- 
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item border-none"> {{valueitem.tipo}} </li>
-    <li class="list-group-item">{{valueitem.quantity}}</li>
-    <li class="list-group-item">{{valueitem.description}}</li>
-  </ul>
-  <div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToEdit(valueitem)">edit product</button>
-    <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToDelete(valueitem)">delete
-      product</button>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel> 
+  
 <div class="container col-md-8">
   <div class="d-grid gap-2 col-6 mx-auto">
     <button class="btn btn-outline-success m-2 text-capitalize" (click)="onGoToBack()">go back to list</button>
     <button class="btn btn-outline-primary m-2 text-capitalize" (click)="onGoToCreate()">create product</button>
   </div>
-</div>
-<div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
-  <div class="carousel-inner">
-    <div *ngFor="let item of valueitem.imageProduct let i = index" [ngClass]="{'active': i == 0}"
-    class="carousel-item" data-mdb-interval="2000">
-    <img src={{item}} class="d-block w-100" alt="Camera" />
-  </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
