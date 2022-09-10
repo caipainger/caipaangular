@@ -1,7 +1,6 @@
-import { Byte } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import { listVal, Database, ListenEvent } from '@angular/fire/database';
-import { Firestore, collectionData, CollectionReference } from '@angular/fire/firestore';
+import { AngularFireList , AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductcreateComponent } from 'src/app/pages/products/productcreate/productcreate.component';
@@ -13,20 +12,21 @@ import { Products } from 'src/app/shared/models/products';
 export class ProductsService {
 
 
-  selectproduct!: Observable <Products[]> ;
+  selectproduct!: Observable<Products[]> ;
   productscom!: ProductcreateComponent ;
-  productlist!: ListVal<Products>;
-  private productsCollection!: CollectionReference<Products>;
-  constructor( private firebase: Database, private firestore: Firestore) {
+  productlist!: AngularFireList<Products>;
+  private productsCollection!: AngularFirestoreCollection<Products>;
+  constructor( private firebase: AngularFireDatabase, private firestore: AngularFirestore) {
     this.productsCollection = firestore.collection<Products>('products');
     this.getProductList();
    }
    // tslint:disable-next-line: typedef
 
    getProductList(): void{
+     this.productsCollection = this.firestore.collection<Products>('products');
      this.selectproduct = this.productsCollection.snapshotChanges().pipe(
-       map(actions => actions.map(a => a.payload.doc.data()as Products))
-     );
+      map(actions => actions.map((a: { payload: { doc: { data: () => Products; }; }; }) => a.payload.doc.data() as Products)));
+    
     }
    insertProductList( products: Products, prodId: string): Promise<void>{
      console.log(products);
