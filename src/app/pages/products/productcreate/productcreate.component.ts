@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorageModule, GetDownloadURLPipeModule } from '@angular/fire/compat/storage';
-import { UntypedFormBuilder, UntypedFormGroup,  Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProductsService } from 'src/app/page/services/products/products.service';
@@ -15,7 +15,7 @@ import { Products } from 'src/app/shared/models/products';
 export class ProductcreateComponent implements OnInit {
   valueitem: any = null;
   products!: Products;
-  productsForm!: UntypedFormGroup;
+  productsForm!: FormGroup;
   isOverDrop = false;
   urlImagen: any[] = [];
   name!: string;
@@ -33,7 +33,7 @@ export class ProductcreateComponent implements OnInit {
     private router: Router,
     public storage: AngularFireStorageModule,
     public productService: ProductsService,
-    public formbuild: UntypedFormGroup,
+    public formbuild: FormBuilder,
     public uploadImage: UploadImageService
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -78,7 +78,8 @@ export class ProductcreateComponent implements OnInit {
     this.router.navigate(['productlist']);
   }
   public CreateProductForm(): void {
-    this.productsForm = this.formbuild.value({
+     
+    this.productsForm = this.formbuild.group({
       name: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.pattern(this.isNumber)]],
@@ -127,7 +128,7 @@ export class ProductcreateComponent implements OnInit {
       this.router.navigate(['productlist']);
     }
   }
-  resetForm(productsForm: UntypedFormGroup): void {
+  resetForm(productsForm: FormGroup): void {
     if (productsForm != null) {
       this.productsForm.reset();
       // this.productService.selectproduct =  this.valueitem;

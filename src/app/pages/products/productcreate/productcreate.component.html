@@ -1,67 +1,130 @@
-
 <div class="container col-md-8">
-    <form (ngSubmit)="onSubmit()" [formGroup]="productsForm">
-        <h6>{{valueitem | json}}</h6>
-        <fieldset>
-            <legend>Register Product </legend>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label text-capitalize">name </label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext text-capitalize" formControlName="name" placeholder="insert name of product or service" (change)="onUpload($event)" >
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label mt-4 text-capitalize">type</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext text-capitalize" formControlName="tipo" placeholder="insert type of product or service">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label mt-4 text-capitalize">price</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext text-capitalize" formControlName="price" placeholder="insert price of product">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label col-md-2 mt-4 text-capitalize">quantity</label>
-                <select class="form-select" id="exampleSelect1" formControlName="quantity">
-              <option>1 </option>
-              <option>2 </option>
-              <option>3 </option>
-              <option>4 </option>
-              <option>5 </option>
-            </select>
-                <label class="form-label col-md-4 mt-4 text-capitalize">units</label>
-                <select class="form-select" id="exampleSelect1" formControlName="units">
-          <option> mts</option>
-          <option> unds </option>
-          <option> workforce </option>
+  <form (ngSubmit)="onSubmit()" [formGroup]="productsForm">
+    <h6>{{ valueitem | json }}</h6>
+    <fieldset>
+      <legend>Register Product</legend>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label text-capitalize">name </label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control-plaintext text-capitalize"
+            formControlName="name"
+            placeholder="insert name of product or service"
+            (change)="onUpload($event)"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label mt-4 text-capitalize">type</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control-plaintext text-capitalize"
+            formControlName="tipo"
+            placeholder="insert type of product or service"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label mt-4 text-capitalize"
+          >price</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control-plaintext text-capitalize"
+            formControlName="price"
+            placeholder="insert price of product"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label col-md-2 mt-4 text-capitalize">quantity</label>
+        <select
+          class="form-select"
+          id="exampleSelect1"
+          formControlName="quantity"
+        >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
         </select>
-            </div>
+        <label class="form-label col-md-4 mt-4 text-capitalize">units</label>
+        <select class="form-select" id="exampleSelect1" formControlName="units">
+          <option>mts</option>
+          <option>unds</option>
+          <option>workforce</option>
+        </select>
+      </div>
 
-            <div class="form-group">
-                <label class="form-label mt-4 text-capitalize">insert description</label>
-                <textarea class="form-control " id="exampleTextarea" formControlName="description" rows="6"></textarea>
-            </div>
-            <div class="form-group">
-                <img *ngfor="let image of finImage != null" src={{finImage[0]}} alt="image upload" style="height: 4rem; height: 4rem;">
-                <img *ngIf="finImage[0] == null " src={{pathImage}} alt="image upload" style="height: 4rem; height: 4rem;">
-                <label class="form-label btn btn-primary btn-hover mt-4 text-capitalize" for="imageInput">Select your image
-                <input type="file" hidden id="imageInput" (change)="onUploadImage($event)" multiple>
-                </label>
-                <input  *ngFor="let item of urlImagen" type="text" class="d-block" value={{item}} formControlName="imageProduct" readonly>
-            </div>
-        </fieldset>
-        <fieldset class="form-group mt-5">
-            <div class="form-group card">
-                <button [disabled]="urlImagen[0] == null " type="submit" class="btn btn-primary primary "><i class="fa fa-plus-circle "></i>   Submit</button>
-            </div>
-        </fieldset>
-    </form>
-</div>
-<div class="container col-md-8">
-    <div class="card">
-        <button class="btn btn-success m-2 text-capitalize" (click)="onGoToBack()"><i class="fa fa-plus-square-o "></i>   go back to list</button>
+      <div class="form-group">
+        <label class="form-label mt-4 text-capitalize"
+          >insert description</label
+        >
+        <textarea
+          class="form-control"
+          id="exampleTextarea"
+          formControlName="description"
+          rows="6"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <div class="card w30" *ngfor="let image of finImage != null">
+          <img
+            src="{{ image }}"
+            alt="image upload"
+            style="height: 4rem; height: 4rem"
+          />
+          <img
+            *ngIf="image == null"
+            src="{{ pathImage }}"
+            alt="image upload"
+            style="height: 4rem; height: 4rem"
+          />
+        </div>
+        <label
+          class="form-label btn btn-primary btn-hover mt-4 text-capitalize"
+          for="imageInput"
+          >Select your image
+          <input
+            type="file"
+            hidden
+            id="imageInput"
+            (change)="onUploadImage($event)"
+            multiple
+          />
+        </label>
+        <input
+          *ngFor="let item of urlImagen"
+          type="text"
+          class="d-block"
+          value="{{ item }}"
+          formControlName="imageProduct"
+          readonly
+        />
+      </div>
+      <div class="row">
+        <div class="row mt-4">
+            <button
+              [disabled]="!productsForm.valid"
+              type="submit"
+              class="btn btn-primary primary btn-lg  btn-hover btn-block"
+            >
+              <i class="fa fa-plus-circle " style="width:2rem ;"></i> Submit
+            </button>
+          </div>
+      </div>
+    </fieldset>
+  </form>
+  <div class="row">
+    <div class="row">
+      <button class="btn btn-success btn-block  btn-hover mt-4 text-capitalize" (click)="onGoToBack()">
+        <i class="fa fa-plus-square-o" style="width: 2rem;"></i> go back to list
+      </button>
     </div>
-
+  </div>
 </div>
+

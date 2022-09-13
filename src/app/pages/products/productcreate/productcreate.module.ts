@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImagedirectiveDirective } from '../../../page/directives/imagedirective.directive';
 import { ProductcreateRoutingModule } from './productcreate-routing.module';
 import { ProductcreateComponent } from './productcreate.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 
 
@@ -15,8 +15,7 @@ import { from } from 'rxjs';
   imports: [
     CommonModule,
     ProductcreateRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule
     
   ]
 })

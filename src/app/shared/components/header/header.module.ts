@@ -8,7 +8,7 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
   imports: [
     CommonModule,
     RouterModule,
-    MdbCollapseModule,    
+    MdbCollapseModule   
   ],
 })
 export class HeaderModule {}

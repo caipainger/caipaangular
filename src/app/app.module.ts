@@ -19,6 +19,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage } from '@angular/fire/storage';
 import { getStorage } from 'firebase/storage';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { getStorage } from 'firebase/storage';
     AppRoutingModule,
     FooterModule,
     HeaderModule,
+    MdbCollapseModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
