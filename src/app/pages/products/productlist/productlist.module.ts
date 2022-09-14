@@ -10,7 +10,7 @@ import { ProductlistComponent } from './productlist.component';
   ],
   imports: [
     CommonModule,
-    ProductlistRoutingModule
+    ProductlistRoutingModule,
   ]
 
 })

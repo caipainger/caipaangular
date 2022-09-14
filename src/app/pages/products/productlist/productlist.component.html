@@ -1,15 +1,16 @@
-<div class="container mb-3 col-md-9" >
+<div class="container mb-6 col-md-9">
   <div class="card border-0" *ngFor="let item of valueitem$ | async">
-    <h3 class="card-header text-capitalize">{{ item.name }}</h3>
+    <h6 class="card-header text-capitalize">{{ item.name }}</h6>
     <div class="card-body">
       <h5 class="card-title">{{ item.tipo }}</h5>
       <h6 class="card-subtitle text-muted">{{ item.quantity }}</h6>
     </div>
-    <div class="img-fluid mb-3 col-md-9">
+    <div class="img-fluid mb-6 col-md-9">
       <img
         src="{{ item.imageProduct[0] }}"
         class="rounded hover-shadow w-75 h-auto"
         alt=""
+        (click)="onGoToDetails(item)"
       />
     </div>
     <div class="card-body">
@@ -30,4 +31,51 @@
       create form
     </button>
   </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover" heading="Title">
+    <thead class="row">
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name product</th>
+        <th scope="col">Type</th>
+        <th scope="col">Quantity available</th>
+        <th scope="col">Requested</th>
+        <th scope="col">Sended</th>
+        <th scope="col">Messaje</th>
+        <th scope="col">Options</th>
+      </tr>
+      <div class="card-header" for="image"></div>
+    </thead>
+    <tbody>
+      <tr class="table-info" *ngFor="let item of valueitem$ | async">
+        <td scope="row">
+          <img
+            src="{{ item.imageProduct[0] }}"
+            class="rounded hover-shadow w-25 h-auto"
+            alt=""
+          />
+        </td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.tipo }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.name }}</td>
+        <td><button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fas fa-message"></i>
+        </button></td>
+        <td class = " bnt-group d-none d-sm-block " role = " group "
+        ><button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fab fa-delete-left"></i>
+        </button>
+        <button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fab fa-seedling"></i>
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

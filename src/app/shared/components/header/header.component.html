@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary ui-state-hover align-content-end">
+  <div class="container-fluid mx-auto">
     <a class="navbar-brand" href="#"
       ><img
         class="icon"
@@ -18,7 +18,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <div
-      class="collapse navbar-collapse justify-content-center"
+      class="collapse navbar-collapse"
       id="navbarNavAltMarkup"
       mdbCollapse
       #noListNav="mdbCollapse"
@@ -46,7 +46,7 @@
       </div>
         <div class="d-flex" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active" *ngIf="users">
+            <li class="nav-item " *ngIf="users">
               <a class="nav-link" [routerLink]="['/upload-image']">Upload</a>
             </li>
           </ul>
@@ -56,6 +56,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link"> {{ users.email }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="badge badge-pill bg-danger">1</span>
+                <span><i class="fas fa-shopping-cart"></i></span>
+              </a>
             </li>
           </ul>
           
@@ -69,17 +75,6 @@
               </li>
             </ul>
           </ng-template>
-          <div class="container-fluid">
-            <ul class="navbar-nav">
-              <!-- Badge -->
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="badge badge-pill bg-danger">1</span>
-                  <span><i class="fas fa-shopping-cart"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
