@@ -101,7 +101,8 @@
           *ngFor="let item of urlImagen"
           type="text"
           class="d-block"
-          value="{{ item }}"
+          [value]="item"
+          
           formControlName="imageProduct"
           readonly
         />
@@ -109,7 +110,7 @@
       <div class="row">
         <div class="row mt-4">
             <button
-              [disabled]="!productsForm.valid"
+              [disabled]="productsForm.valid"
               type="submit"
               class="btn btn-primary primary btn-lg  btn-hover btn-block"
             >

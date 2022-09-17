@@ -1,0 +1,70 @@
+<div class="table table-responsive">
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Image</th>
+      <th>Name product</th>
+      <th>Type</th>
+      <th>Quantity available</th>
+      <th>Requested</th>
+      <th>Sended</th>
+      <th>Messaje</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of valueitem$ | async">
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+            src="{{ item.imageProduct[0] }}"
+            alt=""
+            style="width: 45px; height: 45px"
+            class="rounded-circle"
+          />
+        </div>
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.tipo }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.name }}</td>
+      <td>
+        <button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fas fa-message"></i>
+        </button>
+      </td>
+      <td class="bnt-group d-none d-sm-block" role=" group ">
+        <button type="button" class="btn btn-outline-primary waves-effect" (click)="onGoEdit(item)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fas fa-delete-left"></i>
+        </button>
+        <button type="button" class="btn btn-outline-primary waves-effect">
+          <i class="fas fa-seedling"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <nav aria-label="...">
+    <ul class="pagination pagination-circle">
+      <li class="page-item">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+          >Previous</a
+        >
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#"
+          >2 <span class="visually-hidden">(current)</span></a
+        >
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+</table>
+</div>

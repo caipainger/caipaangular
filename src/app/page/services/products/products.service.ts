@@ -18,7 +18,10 @@ export class ProductsService {
   productlist!: AngularFireList<Products>;
   private productsCollect!: AngularFirestoreCollection<Products>;
   private productsCollection!: any;
-  constructor( private firebase: AngularFireDatabase, private firestore: AngularFirestore, private frs: Firestore) {
+  constructor( private firebase: AngularFireDatabase, 
+    private firestore: AngularFirestore, 
+    private frs: Firestore
+    ) {
     this.getProductList();
    }
 
@@ -27,13 +30,14 @@ export class ProductsService {
       this.selectproduct = collectionData(this.productsCollection, {idField: 'id'}) as Observable<Products[]>;
           
     }
+
    insertProductList( products: Products, prodId: string): Promise<void>{
      console.log(products);
      return new Promise(async (resolve, reject) => {
        try {
          const Id = prodId || this.firestore.createId();
          const data = {Id, ...products};
-         const result = await this.productsCollect.doc(Id).set(data);
+         const result = await this.productsCollection.doc(Id).set(data);
          resolve(result);
        } catch (err) {
          reject(err);

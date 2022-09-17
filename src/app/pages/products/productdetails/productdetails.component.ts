@@ -35,7 +35,6 @@ export class ProductdetailsComponent implements OnInit {
   onGoToEdit(item: Products): void {
     this.navigationextras.state = item;
     this.router.navigate(['productcreate'], this.navigationextras);
-    alert('esto es lo que hay  ' + item.Id + ' '+this.router.navigate(['productcreate'], this.navigationextras));
   }
   onGoToCreate(): void {
     this.router.navigate(['productcreate']);

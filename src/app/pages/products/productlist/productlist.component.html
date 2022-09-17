@@ -5,7 +5,7 @@
       <h5 class="card-title">{{ item.tipo }}</h5>
       <h6 class="card-subtitle text-muted">{{ item.quantity }}</h6>
     </div>
-    <div class="img-fluid mb-6 col-md-9">
+    <div class="img-fluid ">
       <img
         src="{{ item.imageProduct[0] }}"
         class="rounded hover-shadow w-75 h-auto"
@@ -31,51 +31,4 @@
       create form
     </button>
   </div>
-</div>
-<div class="table-responsive">
-  <table class="table table-hover" heading="Title">
-    <thead class="row">
-      <tr>
-        <th scope="col">Image</th>
-        <th scope="col">Name product</th>
-        <th scope="col">Type</th>
-        <th scope="col">Quantity available</th>
-        <th scope="col">Requested</th>
-        <th scope="col">Sended</th>
-        <th scope="col">Messaje</th>
-        <th scope="col">Options</th>
-      </tr>
-      <div class="card-header" for="image"></div>
-    </thead>
-    <tbody>
-      <tr class="table-info" *ngFor="let item of valueitem$ | async">
-        <td scope="row">
-          <img
-            src="{{ item.imageProduct[0] }}"
-            class="rounded hover-shadow w-25 h-auto"
-            alt=""
-          />
-        </td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.tipo }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.name }}</td>
-        <td><button type="button" class="btn btn-outline-primary waves-effect">
-          <i class="fas fa-message"></i>
-        </button></td>
-        <td class = " bnt-group d-none d-sm-block " role = " group "
-        ><button type="button" class="btn btn-outline-primary waves-effect">
-          <i class="fas fa-edit"></i>
-        </button>
-        <button type="button" class="btn btn-outline-primary waves-effect">
-          <i class="fab fa-delete-left"></i>
-        </button>
-        <button type="button" class="btn btn-outline-primary waves-effect">
-          <i class="fab fa-seedling"></i>
-        </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>

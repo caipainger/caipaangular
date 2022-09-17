@@ -1,2 +1,2 @@
-ng g s pages / employees / employees - skipTests
-ng g m pages / employees / details --module app route details
+ng g s pages / employees / employees --skip-tests
+ng g m pages / employees / details --module app --route details

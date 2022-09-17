@@ -1,43 +1,36 @@
 <div class="container col-md-8">
-    <form (ngSubmit)="onSubmit(quotesForm)" #quotesForm="ngForm">
-        <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="quotesService.selectQuotes.$key">
+    <form class="border border-light p-5" (ngSubmit)="onSubmit()" [formGroup]="quotesForm">
 
-        <fieldset>
-            <legend>Legend </legend>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label text-capitalize">name </label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext text-capitalize" name="name" #name="ngModel" [(ngModel)]="quotesService.selectQuotes.name" placeholder="insert name of product or service">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label mt-4 text-capitalize">type</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext text-capitalize" name="product" #product="ngModel" [(ngModel)]="quotesService.selectQuotes.product" placeholder="insert type of product or service">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label mt-4 text-capitalize">price</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext text-capitalize" name="quantity" #quantity="ngModel" [(ngModel)]="quotesService.selectQuotes.quantity" placeholder="insert price of product">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label mt-4 text-capitalize">insert description</label>
-                <textarea class="form-control " id="exampleTextarea" name="message" #message="ngModel" [(ngModel)]="quotesService.selectQuotes.message" rows="6"></textarea>
-            </div>
-
-        </fieldset>
-        <fieldset class="form-group mt-5">
-            <div class="form-group card">
-                <button type="submit" class="btn btn-primary primary "><i class="fa fa-plus-circle "></i>   Submit</button>
-            </div>
-        </fieldset>
+        <p class="h4 mb-4 text-center">Contact us</p>
+        {{Products.forEach| json}}
+    
+        <input type="text" formControlName="nameUser" class="form-control mb-4" placeholder="Input your fullname">
+    
+        <input type="hidden" formControlName="date" class="form-control mb-4" value="{{datecurrent | date}}">
+    
+        <label for="defaultSelect">Subject</label>
+        <select id="defaultSelect" class="browser-default custom-select mb-4" >
+            <option value="" disabled="">Choose option</option>
+            <option *ngFor="let item of Products | async; let i=index" value="{{i}}" selected="" formControlName="nameProduct">{{item.name}}
+                <input type="hidden" formControlName="productId" value="{{item}}">
+            </option>
+            
+        </select>
+    
+        <textarea class="form-control rounded-0" formControlName="message" rows="3" placeholder="Message" formControlName="messaje"></textarea>
+    
+        <div class="custom-control custom-checkbox mb-4">
+            <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+            <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+        </div>
+    
+        <button class="btn btn-info btn-block" type="submit">Send</button>
     </form>
 </div>
+
 <div class="container col-md-8">
     <div class="card">
-        <button class="btn btn-success m-2 text-capitalize" (click)="onGoToBack()"><i class="fa fa-plus-square-o "></i>   go back to list</button>
+        <button class="btn btn-success m-2 text-capitalize" (click)="onGoToBack()"><i class="fa fa-plus-square-o " style="width:2rem;"></i>   go back to list</button>
     </div>
 
 </div>

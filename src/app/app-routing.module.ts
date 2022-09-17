@@ -54,6 +54,7 @@ const routes: Routes = [
         (m) => m.QuoteslistModule
       ),
   },
+  { path: 'productlistadmin', loadChildren: () => import('./pages/products/productlistadmin/productlistadmin.module').then(m => m.ProductlistadminModule) },
   {
     path: '**',
     redirectTo: '/productlist',

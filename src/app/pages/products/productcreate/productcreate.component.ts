@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ProductsService } from 'src/app/page/services/products/products.service';
 import { UploadImageService } from 'src/app/page/services/uploadImage/upload-image.service';
 import { Products } from 'src/app/shared/models/products';
+import { ImageClass } from 'src/app/shared/models/image-class';
 
 @Component({
   selector: 'app-productcreate',
@@ -17,7 +18,7 @@ export class ProductcreateComponent implements OnInit {
   products!: Products;
   productsForm!: FormGroup;
   isOverDrop = false;
-  urlImagen: any[] = [];
+  urlImagen: string[];
   name!: string;
   finImage: any[] = [];
   pathImage = '../../../assets/img/cloud.png';
@@ -43,28 +44,14 @@ export class ProductcreateComponent implements OnInit {
 
   onUpload(e: any): void {
     this.name = e.target.value;
-    console.log(this.name);
   }
   onUploadImage(event: any): void {
     const archivos = event.target.files;
-    for(const i of archivos) {
-      const reader = new FileReader();
-      console.log(this.uploadImage + '\n');
-      reader.readAsDataURL(i);
-      reader.onloadend = () => {
-        this.finImage.push(reader.result);
-        // this.uploadImage
-        //   .createImage(this.name, reader.result)
-        //   .then((urlImage) => {
-        //     this.urlImagen.push(urlImage);
-        //     console.log(urlImage + '\n' + this.urlImagen);
-        //   });
-          
-        console.log(this.uploadImage + '\n');
-      };
-    }
-
-    console.log(event.target.files);
+    const nombre = this.uploadImage.generateFileName(this.name)
+    this.uploadImage.uploadImage(nombre, archivos);
+    this.urlImagen = this.uploadImage.getImages();    
+    const image: ImageClass[] = [];
+    console.log('la url :=>  ' , this.urlImagen);
   }
   onCreate(): void {
     this.router.navigate(['productcreate']);
@@ -100,7 +87,7 @@ export class ProductcreateComponent implements OnInit {
       const archivos = Object.values(this.valueitem.imageProduct);
       for (let i = 0; i < countImage; i++) {
         this.finImage[i] = archivos[i];
-        this.urlImagen[i] = archivos[i];
+        //this.urlImagen[i] = archivos[i];
       }
       console.log(archivos);
       alert(this.finImage);

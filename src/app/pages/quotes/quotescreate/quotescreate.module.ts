@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { QuotescreateRoutingModule } from './quotescreate-routing.module';
 import { QuotescreateComponent } from './quotescreate.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     QuotescreateRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class QuotescreateModule { }
